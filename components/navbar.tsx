@@ -59,15 +59,16 @@ export default function Navbar() {
             {navigation.map((item) => {
               return (
                 <div className="basis-1" key={item.name}>
-                  <Link
-                    href="/"
-                    className={
-                      item.current
-                        ? "font-bold text-main-500 text-2xl "
-                        : " text-2xl"
-                    }
-                  >
-                    <a>{item.name}</a>
+                  <Link href="/">
+                    <a
+                      className={
+                        item.current
+                          ? "font-bold text-main-500 text-2xl "
+                          : " text-2xl"
+                      }
+                    >
+                      {item.name}
+                    </a>
                   </Link>
                 </div>
               );

@@ -123,6 +123,7 @@ const Home: NextPage = () => {
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
           {male.map((post:any) => {
             return <PrisonersCard
+            key={post.id}
             href={`/female_prisoners/show?id=${post.id}`}
             img={post.img}
             name={post.name}

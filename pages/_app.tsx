@@ -1,7 +1,12 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { useEffect } from 'react'
+import initFirebase from '../firebase/init'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+
+  },[])
   return <Component {...pageProps} />
 }
 

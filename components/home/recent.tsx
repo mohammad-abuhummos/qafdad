@@ -62,8 +62,12 @@ const userNavigation = [
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
+interface recentProps {
+  news: any[]
+}
 
-export default function Recent() {
+export default function Recent({news}:recentProps) {
+
   return (
     <>
       <div className="">
@@ -71,15 +75,15 @@ export default function Recent() {
           dir="rtl"
           className="dir mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-4 sm:grid-rows-2 sm:gap-x-6 lg:gap-8"
         >
-          {data.map((data) => {
+          {news.map((data,index) => {
             return (
               <RecentItme
                 key={data.id}
                 id={data.id}
-                src={data.src}
+                src={data.img}
                 title={data.title}
-                className={data.className}
-              />
+                className={index == 0 ?"md:row-span-2 md:col-span-2":""}
+                />
             );
           })}
         </div>

@@ -21,19 +21,13 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Logo } from "./Logo";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const user = {
   name: "Chelsea Hagon",
   email: "chelsea.hagon@example.com",
   imageUrl:
     "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
-const navigation = [
-  { name: "الرئيسية ", href: "#", current: true },
-  { name: "الأسرى ", href: "#", current: false },
-  { name: "الأسيرات ", href: "#", current: false },
-  { name: "مقالات", href: "#", current: false },
-  { name: "أدبيات", href: "#", current: false },
-];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -45,13 +39,24 @@ function classNames(...classes: any[]) {
 }
 
 export default function Navbar() {
+  const router = useRouter()
+  const currentPath = router.asPath
+  console.log(router.asPath);
+  const navigation = [
+    { name: "الرئيسية ", href: "/", current: currentPath == "/" },
+    { name: "الأسرى ", href: "/male_prisoners", current: currentPath == "/male_prisoners" },
+    { name: "الأسيرات ", href: "/female_prisoners", current: currentPath == "/female_prisoners"  },
+    { name: "مقالات", href: "/articles", current: currentPath == "/articles"  },
+ 
+  ];
+
   return (
     <>
       <div dir="rtl" className="min-h-[130px] shadow-lg">
         <div className="flex justify-around items-center w-full min-h-[130px] ">
           <Link href="/" className="">
             <a>
-              <Logo className="h-10 w-auto" />
+            <Image src="/assets/logo.png" width="100" height="100" />
             </a>
           </Link>
 
@@ -59,7 +64,7 @@ export default function Navbar() {
             {navigation.map((item) => {
               return (
                 <div className="basis-1" key={item.name}>
-                  <Link href="/">
+                  <Link href={item.href}>
                     <a
                       className={
                         item.current
@@ -74,28 +79,7 @@ export default function Navbar() {
               );
             })}
           </div>
-          <div className="hidden sm:block">
-            <div className="w-full">
-              <label htmlFor="search" className="sr-only">
-                Search
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <MagnifyingGlassIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <input
-                  id="search"
-                  name="search"
-                  className="block w-full rounded-2xl border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-indigo-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Search"
-                  type="search"
-                />
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}

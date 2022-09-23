@@ -1,4 +1,7 @@
+import moment from "moment";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getNews } from "../api/news";
 
 /* This example requires Tailwind CSS v2.0+ */
 const posts = [
@@ -64,12 +67,30 @@ const posts = [
   },
 ];
 
-export default function News() {
+interface newsProps {
+  news: any[]
+}
+export default function News({news}:newsProps) {
+  // const [news, setNews] = useState<any[]>([])
+  // useEffect(() => {
+  //   getNewsList();
+  // },[
+    
+  // ])
+
+  // const getNewsList = async () => {
+  //   try {
+  //     const data =await getNews()
+  //     setNews(data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   return (
     <div className="relative" dir="rtl">
       <div className="relative">
         <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post, index) => (
+          {news.map((post:any, index:any) => (
             <div
               key={post.title + index}
               className="flex flex-col overflow-hidden rounded-lg shadow-lg"
@@ -77,18 +98,18 @@ export default function News() {
               <div className="flex-shrink-0">
                 <img
                   className="h-56 w-full object-cover"
-                  src={post.imageUrl}
+                  src={post.img}
                   alt=""
                 />
               </div>
               <div className="flex flex-1 flex-col justify-between bg-white p-6">
                 <div className="flex-1">
-                  <Link href={post.href} className="mt-2 block">
+                  <Link href={`/news/show?id=${post.id}`} className="mt-2 block">
                     <a>
-                      <p className="text-xl font-semibold text-gray-900">
+                      <p className="truncate text-xl font-semibold text-gray-900">
                         {post.title}
                       </p>
-                      <p className="mt-3 pr-2 text-base text-gray-500  border-t border-main-500/50 ">
+                      <p className=" h-20  text-ellipsis overflow-hidden mt-3 pr-2 text-base text-gray-500  border-t border-main-500/50 ">
                         {post.description}
                       </p>
                     </a>
@@ -97,8 +118,8 @@ export default function News() {
                 <div className="mt-6 flex items-center">
                   <div className="ml-3">
                     <div className="flex space-x-1 text-sm text-main-500">
-                      <time lang="ar" dateTime={post.date}>
-                        {post.date}
+                      <time lang="ar" dateTime={post.created.toDate().toString()}>
+                        {moment(post.created.toDate()).format("DD/MM/YY")}
                       </time>
                     </div>
                   </div>

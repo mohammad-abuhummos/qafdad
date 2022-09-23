@@ -15,6 +15,8 @@
   ```
 */
 
+import Link from "next/link";
+
 interface recentItmeProps {
   title: string;
   src: string;
@@ -29,6 +31,10 @@ export default function RecentItme({
 }: recentItmeProps) {
   return (
     <div className={`${className} `} key={id}>
+         <Link href={`/news/show?id=${id}`} className="mt-2 block">
+        <a>
+          
+           
       <div className="w-full h-full relative ">
         <img
           src={src}
@@ -49,7 +55,9 @@ export default function RecentItme({
             </h3>
           </div>
         </div>
-      </div>
+          </div>
+          </a>
+                </Link>
     </div>
   );
 }

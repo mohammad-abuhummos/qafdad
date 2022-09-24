@@ -121,13 +121,13 @@ const Home: NextPage = () => {
         <div className="pt-20 px-7 md:px-[10%]">
           <TitleWithAction title="الأحدث" actionName="قراءة المزيد " />
           <div>
-            <Recent  news={news} />
+            <Recent  news={news.slice(0, 5)} />
           </div>
         </div>
         <div className="pt-20 mt-10 px-7 md:px-[10%]">
           <TitleWithAction title="الأخبار" actionName="قراءة المزيد " />
           <div>
-            <News news={news} />
+            <News news={news.slice(5, news.length -1 < 6 ? news.length -1 : 6)} />
           </div>
         </div>
       </main>

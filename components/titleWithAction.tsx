@@ -27,7 +27,7 @@ export default function TitleWithAction({
 }: titleWithActionProps) {
   return (
     <div className="w-full flex justify-between items-center">
-      <Link href="/">
+      <Link href="/news/list">
         <a className="font-semibold text-xl text-main-500 flex items-center justify-start">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -22,16 +22,18 @@ interface recentItmeProps {
   src: string;
   id: number;
   className?: String;
+  action?: String;
 }
 export default function RecentItme({
   title,
   id,
   src,
   className,
+  action=`/news/show?id=${id}`,
 }: recentItmeProps) {
   return (
     <div className={`${className} `} key={id}>
-         <Link href={`/news/show?id=${id}`} className="mt-2 block">
+         <Link href={`${action}`} className="mt-2 block">
         <a>
           
            

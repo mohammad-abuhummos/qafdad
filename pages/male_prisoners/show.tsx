@@ -148,12 +148,11 @@ const Show: NextPage = () => {
               </div>
             <h1 className="text-main-500 text-4xl font-bold pt-10">
               {" "}
-              {!!post && post.title}
+              {!!post && post.title != "null" && post.title}
             </h1>
             <div>
             
-            
-              <p className="text-3xl font-semibold pt-16 ">
+              <p className="text-xl font-semibold pt-16 ">
                 {" "}
                 {post.description}
               </p>

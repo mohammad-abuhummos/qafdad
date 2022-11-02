@@ -154,7 +154,7 @@ const Show: NextPage = () => {
             <div>
             
             
-              <p className="text-3xl font-semibold pt-16 ">
+              <p className="text-xl font-semibold pt-16 ">
                 {" "}
                 {post.description}
               </p>

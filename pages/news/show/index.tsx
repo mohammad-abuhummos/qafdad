@@ -124,7 +124,7 @@ const Show: NextPage = () => {
                   src={post.img}
                   alt=""
                           />
-                          <p className="text-3xl font-semibold pt-16"> {post.description
+                          <p className="text-xl font-semibold pt-16"> {post.description
 }</p>
                   </div>
               </div>

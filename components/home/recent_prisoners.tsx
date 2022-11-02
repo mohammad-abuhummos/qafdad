@@ -78,6 +78,7 @@ export default function RecentPrisoners({news}:recentProps) {
           {news.map((data,index) => {
             return (
               <RecentItme
+                action={`/male_prisoners/show?id=${data.id}`}
                 key={data.id}
                 id={data.id}
                 src={data.img}

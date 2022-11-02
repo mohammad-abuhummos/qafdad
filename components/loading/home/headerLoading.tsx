@@ -45,7 +45,7 @@ export default function HeaderLoadingCard() {
         >
           {data.map((data,index) => {
             return (
-                <div  className={ "bg-gray-600 animate-pulse min-h-[30vh] rounded-2xl" + " " +( index == 0 ?"md:row-span-2 md:col-span-2":"")}>
+                <div key={index + "loading"}  className={ "bg-gray-600 animate-pulse min-h-[30vh] rounded-2xl" + " " +( index == 0 ?"md:row-span-2 md:col-span-2":"")}>
                     
               </div>
             );

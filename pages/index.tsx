@@ -170,15 +170,17 @@ const Home: NextPage = () => {
               </>
             }
           </div>
+            {news.length > 0 &&
+          <>
           <TitleWithAction title="الأحدث" actionName="قراءة المزيد " />
           <div>
-            {news.length > 0 &&
             
               <>
             <Recent news={news.slice(0, 5)} />
               </>
-            }
           </div>
+          </>
+            }
         </div>
         {news.slice(5, news.length - 1 < 6 ? news.length - 1 : 6).length >
           0 && (
